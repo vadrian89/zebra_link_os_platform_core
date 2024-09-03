@@ -12,9 +12,9 @@ abstract class ZebraLinkOsPluginBase extends PlatformInterface
 
   static final Object _token = Object();
 
-  static ZebraLinkOsPluginBase _instance = _ZebraLinkOsDefault();
+  static ZebraLinkOsPluginBase? _instance;
 
-  static ZebraLinkOsPluginBase get instance => _instance;
+  static ZebraLinkOsPluginBase get instance => _instance ??= ZebraLinkOsDefault();
 
   static set instance(ZebraLinkOsPluginBase instance) {
     PlatformInterface.verify(instance, _token);
@@ -42,7 +42,7 @@ abstract class ZebraLinkOsPluginBase extends PlatformInterface
 }
 
 /// Default implementation of the ZebraLinkOsPlatform.
-class _ZebraLinkOsDefault extends ZebraLinkOsPluginBase {
+class ZebraLinkOsDefault extends ZebraLinkOsPluginBase {
   @override
   Future<void> dispose() => throw UnimplementedError();
 
