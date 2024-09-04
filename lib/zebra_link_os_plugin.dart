@@ -70,5 +70,5 @@ class ZebraLinkOsDefault extends ZebraLinkOsPluginBase {
   Future<bool> disconnect() => throw UnimplementedError();
 
   @override
-  Future<void> startDiscovery() => throw UnimplementedError();
+  Future<List<DiscoveredPrinter>?> startDiscovery() => throw UnimplementedError();
 }

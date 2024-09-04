@@ -10,5 +10,5 @@ abstract interface class ZebraDiscoveryInterface {
   /// Start discovering printers.
   ///
   /// When a printer is found it will be added to the [printerFound] stream.
-  Future<void> startDiscovery();
+  Future<List<DiscoveredPrinter>?> startDiscovery();
 }
