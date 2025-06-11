@@ -64,6 +64,15 @@ class ZebraLinkOsDefault extends ZebraLinkOsPluginBase {
       throw UnimplementedError();
 
   @override
+  Future<bool> storeImage({
+    required String filePath,
+    required String deviceDriveAndFileName,
+    int width = 0,
+    int height = 0,
+  }) =>
+      throw UnimplementedError();
+
+  @override
   Future<bool> connect({required String address}) => throw UnimplementedError();
 
   @override

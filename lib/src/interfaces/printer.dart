@@ -29,4 +29,30 @@ abstract interface class ZebraPrinterInterface {
     int y = 0,
     bool insideFormat = false,
   });
+
+  /// Stores the specified image to the connected printer as a monochrome image.
+  ///
+  /// The image will be stored on the printer at `deviceDriveAndFileName` with the extension GRF.
+  /// If a drive letter is not supplied, E will be used as the default
+  /// (e.g. FILE becomes E:FILE.GRF).
+  /// If an extension is supplied, it is ignored if it is not either BMP or PNG.
+  /// If the extension is ignored, GRF will be used.
+  /// If the image resolution is large (e.g. 1024x768) this method may take a long time to
+  /// execute or throw an OutOfMemoryError exception.
+  ///
+  /// This is useful when printing images multiple times, as it avoids loading the image
+  /// from the file system each time.
+  ///
+  /// [filePath] is the location of the image file, on the device controlling the printer.
+  /// [deviceDriveAndFileName] is the name of the image to be stored in the printer's memory.
+  /// [width] is the width of the image. If `0` then the image will be stored at its
+  /// original width.
+  /// [height] is the height of the image. If `0` then the image will be stored at its
+  /// original height.
+  Future<bool> storeImage({
+    required String filePath,
+    required String deviceDriveAndFileName,
+    int width = 0,
+    int height = 0,
+  });
 }
