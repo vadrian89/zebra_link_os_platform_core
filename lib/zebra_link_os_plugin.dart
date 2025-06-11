@@ -39,6 +39,14 @@ abstract class ZebraLinkOsPluginBase extends PlatformInterface
     int y = 0,
     bool insideFormat = false,
   });
+
+  @override
+  Future<bool> storeImage({
+    required String filePath,
+    required String deviceDriveAndFileName,
+    int width = 0,
+    int height = 0,
+  });
 }
 
 /// Default implementation of the ZebraLinkOsPlatform.
