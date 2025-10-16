@@ -1,6 +1,6 @@
 name: zebra_link_os_platform_core
 description: "Core files and interfaces used to implement the Zebra Link-OS plugin in Flutter."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/vadrian89/zebra_link_os_platform_core
 
 environment:

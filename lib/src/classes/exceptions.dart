@@ -13,6 +13,21 @@ class ZebraLinkOsException implements Exception {
 
   const ZebraLinkOsException({required this.message, this.stackTrace});
 
+  /// Factory constructor which builds a concrete exception based on the given [error] string.
+  ///
+  /// The [error] string should match one of the predefined exception classes.
+  /// Provided [stackTrace] will be passed to the created exception.
+  ///
+  /// Currently, only "discoveryInProgress" is mapped to [ZebraDiscoveryInProgressException].
+  factory ZebraLinkOsException.fromString({required String error, StackTrace? stackTrace}) =>
+      switch (error) {
+        "discoveryInProgress" => ZebraLinkOsException.discoveryInProgress(
+            message: "Discovery is already in progress!",
+            stackTrace: stackTrace,
+          ),
+        _ => ZebraLinkOsException(message: error, stackTrace: stackTrace),
+      };
+
   /// Initializes a new [ZebraUnknownException] instance.
   ///
   /// If [message] is `null` then the default message is `An unknown error occurred!`
@@ -30,6 +45,12 @@ class ZebraLinkOsException implements Exception {
   /// Initializes a new [ZebraConnectionException] instance.
   const factory ZebraLinkOsException.connection({required String message, StackTrace? stackTrace}) =
       ZebraConnectionException;
+
+  /// Initializes a new [ZebraDiscoveryInProgressException] instance.
+  const factory ZebraLinkOsException.discoveryInProgress({
+    required String message,
+    StackTrace? stackTrace,
+  }) = ZebraDiscoveryInProgressException;
 
   @override
   String toString() => "ZebraLinkOsException: $message\n$stackTrace";
@@ -56,4 +77,9 @@ class ZebraWriteException extends ZebraLinkOsException {
 /// Exception thrown when an error occurs while trying to print an image.
 class ZebraPrintImageException extends ZebraLinkOsException {
   const ZebraPrintImageException({required super.message, super.stackTrace});
+}
+
+/// Exception thrown when the discovery is already in progress.
+class ZebraDiscoveryInProgressException extends ZebraLinkOsException {
+  const ZebraDiscoveryInProgressException({required super.message, super.stackTrace});
 }
